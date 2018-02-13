@@ -1,0 +1,8 @@
+{"host" : "localhost",
+  "port" : "5672",
+  "userName" : "guest",
+  "password" : "guest",
+  "exchange" : "rmq.internal.exchange",
+  "queues" : ["rmq.internal.emailDataLoad"],
+  "keys" : ["rmq.builderDataLoad.key"]
+}
