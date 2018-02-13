@@ -19,8 +19,9 @@ class EMAILRECIEVER:
         self.message_rmq.setCCListInEmail(email_message['cc'])
         self.message_rmq.setEmailBody(email_message.get_payload())
         self.message_rmq.setEmailSubject(email_message['subject'])
-        self.message_rmq.setEmployeeWhoSendEmail(email_message['from'])
-        message_processor.processMessage(email_message)
+        self.message_rmq.setRequesterName(email_message['from'])
+        self.message_rmq.setRequesterEmail(email_message['from'])
+        message_processor.processMessage(self.message_rmq)
 
 email_rec = EMAILRECIEVER('asdasd')
 email_rec.EmailMessageHandler('abc')
