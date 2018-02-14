@@ -45,7 +45,7 @@ class RawEmailsPersistor(object):
         :param json_with_request_id: dict object containing request id
         :return: True if request id exists else false
         """
-        if type(client[db_name][collection_name].find_one(json_with_request_id)) is not None:
+        if type(self.FetchFromRawEmails(json_key = json_with_request_id)) is not None:
             return True
         else:
             return False

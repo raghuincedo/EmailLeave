@@ -42,3 +42,4 @@ db_config_data = return_DB_config_file()
 ad_config_data = return_AD_config_file()
 email_config_data = return_Email_config_file()
 rmq_config_data = return_Rmq_config_file()
+logger_name = "MainLogger"

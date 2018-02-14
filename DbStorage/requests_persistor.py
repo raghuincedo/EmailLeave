@@ -2,9 +2,9 @@ from DbStorage.DB_connection_maker import client
 from ConfigFilesLoader import db_config_data
 
 db_name = db_config_data['database_info']['name']
-collection_name = db_config_data['database_info']['collections']['rawEmails']
+collection_name = db_config_data['database_info']['collections']['requests']
 
-class UsersPersistor(object):
+class RequestsPersistor(object):
     """
     - > help
     """
@@ -14,7 +14,7 @@ class UsersPersistor(object):
         """
         pass
 
-    def InsertIntoUsers(self, json_data = {}):
+    def InsertIntoRequests(self, json_data = {}):
         """
         - > inserts json data in user collection
         :param json_data: dict data
@@ -27,7 +27,7 @@ class UsersPersistor(object):
         client[db_name][collection_name].insert_one(json_data)
         return True
 
-    def FetchFromUsers(self, json_key = {}):
+    def FetchFromRequests(self, json_key = {}):
         """
         - > fetch record from database containing json_key
         :param json_key: dict object
@@ -38,10 +38,3 @@ class UsersPersistor(object):
             return None
 
         return client[db_name][collection_name].find_one(json_key)
-
-    def CheckRequestIdExists(self, json_with_request_id):
-        """
-        - > checks if input json containing request id exists in the collection
-        :param json_with_request_id: dict object containing request id
-        :return: True if request id exists else false
-        """
