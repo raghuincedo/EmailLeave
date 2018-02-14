@@ -1,16 +1,18 @@
 import smtplib
 from email.message import EmailMessage
-
+from ConfigFilesLoader import email_config_data
 
 class EMAILRESPONDER:
 
-    def __init__(self,host='mail.incedoinc.com',login='helpdesk_icf@incedoinc.com',
-                 password='feb@2018'):
+    def __init__(self,
+                 host = email_config_data['host'],
+                 login = email_config_data['login_id'],
+                 password = email_config_data['password']):
         self.host=host
         self.login=login
         self.password=password
 
-    def sendMail(self,to="user_icf@incedoinc.com",subject="test_mail",content="testing body"):
+    def sendMail(self,to="user_icf@incedoinc.com", subject="test_mail", content="testing body"):
 
         msg = EmailMessage()
         msg.set_content(content)

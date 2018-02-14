@@ -3,11 +3,16 @@
 import imaplib
 import email
 import time
+from ConfigFilesLoader import email_config_data
 
 # new mail generator --> yield after each mail to save resources
 class EMAILPOLLER():
-    def __init__(self,last_uid=None,host='mail.incedoinc.com', port=143,
-                 login='helpdesk_icf@incedoinc.com',password='feb@2018'):
+    def __init__(self,
+                 last_uid = None,
+                 host = email_config_data['host'],
+                 port = email_config_data['port'],
+                 login = email_config_data['login_id'],
+                 password = email_config_data['password']):
 
         self.last_uid=last_uid
         self.host=host
@@ -57,12 +62,12 @@ class EMAILPOLLER():
 email_poller=EMAILPOLLER()
 email_poller.pollerLoop()
 
-    '''
-    if email_message.is_multipart():
-        for part in email_message.get_payload():
-            print(part.get_payload())
-    else:
-        a=1
-        print(email_message.get_payload(decode=True))
+'''
+if email_message.is_multipart():
+    for part in email_message.get_payload():
+        print(part.get_payload())
+else:
+    a=1
+    print(email_message.get_payload(decode=True))
 
-    '''
+'''
