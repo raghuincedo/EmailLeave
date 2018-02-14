@@ -4,7 +4,7 @@ from ConfigFilesLoader import db_config_data
 db_name = db_config_data['database_info']['name']
 collection_name = db_config_data['database_info']['collections']['rawEmails']
 
-class UsersPersistor(object):
+class RawEMailsPersistor(object):
     """
     - > help
     """
@@ -45,3 +45,4 @@ class UsersPersistor(object):
         :param json_with_request_id: dict object containing request id
         :return: True if request id exists else false
         """
+        pass
