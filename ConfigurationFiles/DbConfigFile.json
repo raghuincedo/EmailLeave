@@ -1,0 +1,13 @@
+{
+   "host":"localhost",
+   "port":27017,
+   "database_info":{
+      "name":"LeaveViaEmail",
+      "collections":{
+         "requests":"Requests",
+         "users":"Users",
+         "rawEmails":"RawEmails",
+         "leaveDatesByLocation":"LeaveDatesByLocation"
+      }
+   }
+}
