@@ -4,6 +4,7 @@ from pymongo.errors import ConnectionFailure
 from ConfigFilesLoader import db_config_data, logger_name
 import Logger
 import logging
+from DbStorage.raw_email_persistor import RawEmailsPersistor
 
 logger = logging.getLogger(logger_name)
 db_name = db_config_data['database_info']['name']
@@ -20,3 +21,5 @@ if db_config_data['database_info']['name'] not in client.database_names():
 else:
     logger.info("Database already exists")
 
+
+raw_emails_persistor = RawEmailsPersistor()

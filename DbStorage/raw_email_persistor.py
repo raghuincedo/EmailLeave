@@ -4,7 +4,7 @@ from ConfigFilesLoader import db_config_data
 db_name = db_config_data['database_info']['name']
 collection_name = db_config_data['database_info']['collections']['rawEmails']
 
-class RawEMailsPersistor(object):
+class RawEmailsPersistor(object):
     """
     - > help
     """
@@ -14,7 +14,7 @@ class RawEMailsPersistor(object):
         """
         pass
 
-    def InsertIntoUsers(self, json_data = {}):
+    def InsertIntoRawEmails(self, json_data = {}):
         """
         - > inserts json data in user collection
         :param json_data: dict data
@@ -27,7 +27,7 @@ class RawEMailsPersistor(object):
         client[db_name][collection_name].insert_one(json_data)
         return True
 
-    def FetchFromUsers(self, json_key = {}):
+    def FetchFromRawEmails(self, json_key = {}):
         """
         - > fetch record from database containing json_key
         :param json_key: dict object
@@ -39,10 +39,13 @@ class RawEMailsPersistor(object):
 
         return client[db_name][collection_name].find_one(json_key)
 
-    def CheckRequestIdExists(self, json_with_request_id):
+    def CheckRequestIdExists(self, json_with_request_id = {}):
         """
         - > checks if input json containing request id exists in the collection
         :param json_with_request_id: dict object containing request id
         :return: True if request id exists else false
         """
-        pass
+        if type(client[db_name][collection_name].find_one(json_with_request_id)) is not None:
+            return True
+        else:
+            return False
