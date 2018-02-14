@@ -1,6 +1,6 @@
 {
   "host" : "mail.incedoinc.com",
   "port" : 143,
-  "login_id" : 'helpdesk_icf@incedoinc.com',
-  "password" : 'feb@2018'
+  "login_id" : "helpdesk_icf@incedoinc.com",
+  "password" : "feb@2018"
 }
