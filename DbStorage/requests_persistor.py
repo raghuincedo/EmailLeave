@@ -13,7 +13,8 @@ class RequestsPersistor(object):
         """
         - >
         """
-        self.InsertIntoRequests(json_data = requests_template)
+        if client[db_name][collection_name].count() == 0:
+            self.InsertIntoRequests(json_data = requests_template)
 
     def InsertIntoRequests(self, json_data = {}):
         """

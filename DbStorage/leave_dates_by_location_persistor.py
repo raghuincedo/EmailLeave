@@ -12,7 +12,8 @@ class LeaveDatesPersistor(object):
         """
         - >
         """
-        self.InsertIntoLeaveDates(json_data = leave_dates_template)
+        if client[db_name][collection_name].count() == 0:
+            self.InsertIntoLeaveDates(json_data = leave_dates_template)
 
     def InsertIntoLeaveDates(self, json_data = {}):
         """

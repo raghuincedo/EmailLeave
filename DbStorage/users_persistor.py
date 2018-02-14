@@ -13,7 +13,8 @@ class UsersPersistor(object):
         """
         - >
         """
-        self.InsertIntoUsers(json_data = users_template)
+        if client[db_name][collection_name].count() == 0:
+            self.InsertIntoUsers(json_data = users_template)
 
     def InsertIntoUsers(self, json_data = {}):
         """
