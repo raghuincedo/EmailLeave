@@ -1,6 +1,6 @@
 from DbStorage.DB_connection_maker import client
 from ConfigFilesLoader import db_config_data
-
+from ConfigurationFiles.DB_collection_templates import leave_dates_template
 db_name = db_config_data['database_info']['name']
 collection_name = db_config_data['database_info']['collections']['leaveDatesByLocation']
 
@@ -12,7 +12,7 @@ class LeaveDatesPersistor(object):
         """
         - >
         """
-        pass
+        self.InsertIntoLeaveDates(json_data = leave_dates_template)
 
     def InsertIntoLeaveDates(self, json_data = {}):
         """
@@ -25,6 +25,7 @@ class LeaveDatesPersistor(object):
             return False
 
         client[db_name][collection_name].insert_one(json_data)
+        print("Record inserted in {} succesfully".format(collection_name))
         return True
 
     def FetchFromLeaveDates(self, json_key = {}):

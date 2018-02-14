@@ -1,5 +1,6 @@
 from DbStorage.DB_connection_maker import client
 from ConfigFilesLoader import db_config_data
+from ConfigurationFiles.DB_collection_templates import users_template
 
 db_name = db_config_data['database_info']['name']
 collection_name = db_config_data['database_info']['collections']['users']
@@ -12,7 +13,7 @@ class UsersPersistor(object):
         """
         - >
         """
-        pass
+        self.InsertIntoUsers(json_data = users_template)
 
     def InsertIntoUsers(self, json_data = {}):
         """
@@ -25,6 +26,7 @@ class UsersPersistor(object):
             return False
 
         client[db_name][collection_name].insert_one(json_data)
+        print("Record inserted in {} succesfully".format(collection_name))
         return True
 
     def FetchFromUsers(self, json_key = {}):

@@ -1,5 +1,6 @@
 from DbStorage.DB_connection_maker import client
 from ConfigFilesLoader import db_config_data
+from ConfigurationFiles.DB_collection_templates import raw_emails_template
 
 db_name = db_config_data['database_info']['name']
 collection_name = db_config_data['database_info']['collections']['rawEmails']
@@ -10,9 +11,9 @@ class RawEmailsPersistor(object):
     """
     def __init__(self):
         """
-        - >
+        - > insert template data in to collection
         """
-        pass
+        self.InsertIntoRawEmails(json_data = raw_emails_template)
 
     def InsertIntoRawEmails(self, json_data = {}):
         """
@@ -25,6 +26,7 @@ class RawEmailsPersistor(object):
             return False
 
         client[db_name][collection_name].insert_one(json_data)
+        print("Record inserted in {} succesfully".format(collection_name))
         return True
 
     def FetchFromRawEmails(self, json_key = {}):
