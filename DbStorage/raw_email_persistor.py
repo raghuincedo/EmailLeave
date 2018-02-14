@@ -39,13 +39,13 @@ class RawEmailsPersistor(object):
 
         return client[db_name][collection_name].find_one(json_key)
 
-    def CheckRequestIdExists(self, json_with_request_id = {}):
+    def CheckRequestIdExists(self, request_id = ""):
         """
         - > checks if input json containing request id exists in the collection
-        :param json_with_request_id: dict object containing request id
+        :param request_id: string containing requestId
         :return: True if request id exists else false
         """
-        if type(self.FetchFromRawEmails(json_key = json_with_request_id)) is not None:
+        if type(self.FetchFromRawEmails(json_key = {"requestID": request_id})) is not None:
             return True
         else:
             return False
